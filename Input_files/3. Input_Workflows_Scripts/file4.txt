@@ -1,2 +1,26 @@
-this is file4
-
+WITH RECURSIVE subordinate AS (
+ SELECT 
+   employee_id,
+   first_name,
+   last_name,
+   manager_id
+  FROM employee
+  WHERE employee_id = 110 -- id of the top hierarchy employee (CEO)
+  
+  UNION ALL
+  
+  SELECT 
+    e.employee_id,
+    e.first_name,
+    e.last_name,
+    e.manager_id
+  FROM employee e
+  JOIN subordinate s
+  ON e.manager_id = s.employee_id
+)
+SELECT 
+  employee_id,
+  first_name,
+  last_name,
+  manager_id
+FROM subordinate ;

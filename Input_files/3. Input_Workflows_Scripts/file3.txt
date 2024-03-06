@@ -1,1 +1,14 @@
-this is file3
+SELECT
+  CASE
+    WHEN salary <= 750000 THEN 'low'
+    WHEN salary > 750000 AND salary <= 100000 THEN 'medium'
+    WHEN salary > 100000 THEN 'high'
+  END AS salary_category,
+  COUNT(*) AS number_of_employees
+FROM    employee
+GROUP BY
+  CASE
+    WHEN salary <= 750000 THEN 'low'
+    WHEN salary > 750000 AND salary <= 100000 THEN 'medium'
+    WHEN salary > 100000 THEN 'high'
+END
