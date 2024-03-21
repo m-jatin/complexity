@@ -3,6 +3,7 @@ delete,5
 insert,5
 merge,5
 update,5
+alter,2
 del,5
 add_months,3
 create volatile,3
