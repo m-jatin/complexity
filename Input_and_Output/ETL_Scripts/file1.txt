@@ -11,3 +11,62 @@ GROUP BY
     employee.last_name
 ORDER BY
     employee.id ASC;
+
+
+-- Example Teradata BTEQ Script
+.LOGON <your_teradata_server>/<your_username>,<your_password>;
+.SET WIDTH 20000; -- Set output width
+
+-- Your SQL queries go here:
+SELECT * FROM your_database.your_table WHERE condition1;
+SELECT * FROM your_database.your_table WHERE condition2;
+-- ... (add more queries)
+
+-- Conditional logic:
+.IF ACTIVITYCOUNT = 0 THEN .QUIT; -- Exit if no rows affected
+
+-- Export results to a file:
+.EXPORT FILE = /path/to/your/output_file.txt;
+
+-- More SQL statements:
+SELECT * FROM another_database.another_table WHERE condition3;
+-- ... (add more queries)
+
+-- Log off and exit:
+.LOGOFF;
+.EXIT;
+
+
+-- Sample Teradata BTEQ Script
+.LOGON <your_teradata_server>/<your_username>,<your_password>;
+.SET WIDTH 20000; -- Set output width
+
+-- Create a temporary table
+CREATE VOLATILE TABLE TempTable AS (
+  SELECT *
+  FROM YourSourceTable
+  WHERE SomeCondition
+) WITH DATA PRIMARY INDEX (YourPrimaryKey);
+
+-- Perform some data transformations
+UPDATE TempTable
+SET Column1 = Column1 * 2
+WHERE AnotherCondition;
+
+-- Export results to a file
+.EXPORT FILE = /path/to/your/output_file.txt;
+
+-- Retrieve data from the temporary table
+SELECT *
+FROM TempTable
+WHERE YetAnotherCondition;
+
+-- Clean up
+DROP TABLE TempTable;
+
+-- Log off and exit
+.LOGOFF;
+.EXIT;
+
+
+
